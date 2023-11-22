@@ -11,14 +11,6 @@ function App({ store }) {
 
   const list = store.getState().list;
 
-  // функция отмены выделения ранее выбраных элементов
-  const deSelectList = () => {
-    const listElements = document.querySelectorAll('.Item')
-    listElements.forEach(element => {
-      element.classList.remove('Item_selected')
-    })
-  };
-
   return (
     <div className='App'>
       <div className='App-head'>
@@ -33,12 +25,7 @@ function App({ store }) {
             <div key={item.code} className='List-item'>
               <div className={'Item' + (item.selected ? ' Item_selected' : '')}
                 onClick={() => {
-                  //отменяем выделение предыдущего элемента
-                  deSelectList();
-                  //выделяем нужный
                   store.selectItem(item.code);
-                  //показываем количество кликов по элементу списка
-                  console.log(item)
                 }}>
                 <div className='Item-code'>{item.code}</div>
                 <div className='Item-title'>{
