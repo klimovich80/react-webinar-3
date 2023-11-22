@@ -6,6 +6,7 @@ class Store {
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
     this.uid = this.state.list.length + 1; //уникальный номер для каждого нового элемента
+    this.count = 0;
   }
 
   /**
@@ -71,6 +72,11 @@ class Store {
       list: this.state.list.map(item => {
         if (item.code === code) {
           item.selected = !item.selected;
+          !item.selectCount ?
+            item.selectCount = 1 :
+            item.selected ?
+              item.selectCount += 1 :
+              item.selectCount = item.selectCount
         }
         return item;
       })
