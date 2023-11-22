@@ -5,8 +5,7 @@ class Store {
   constructor(initState = {}) {
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
-    this.uid = this.state.list.length + 1; //уникальный номер для каждого нового элемента
-    this.count = 0;
+    this.uid = this.state.list.length + 1; //уникальный порядковый номер для каждого нового элемента
   }
 
   /**
