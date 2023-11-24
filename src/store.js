@@ -83,6 +83,18 @@ class Store {
       })
     })
   }
+
+  pluralFunc(count) {
+    if ((count %= 100) >= 10 && (count %= 100) < 20) {
+      return `раз`;
+    } else if ((count %= 10) === 1) {
+      return `раз`;
+    } else if ((count %= 10) === 0 || (count %= 10) > 4) {
+      return `раз`;
+    } else {
+      return `раза`;
+    }
+  }
 }
 
 export default Store;

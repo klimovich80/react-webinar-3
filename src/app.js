@@ -30,7 +30,7 @@ function App({ store }) {
                 <div className='Item-code'>{item.code}</div>
                 <div className='Item-title'>{
                   item.selectCount ?
-                    item.title + ` | Выделяли ${item.selectCount} раз` :
+                    item.title + `| Выделяли ${item.selectCount} ${store.pluralFunc(item.selectCount)}` :
                     item.title
                 }</div>
                 <div className='Item-actions'>
