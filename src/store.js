@@ -85,11 +85,13 @@ class Store {
   }
 
   pluralFunc(count) {
-    if ((count %= 100) >= 10 && (count %= 100) < 20) {
+    const restFromHundred = count %= 100;
+    const restFromTen = count %= 10;
+    if (restFromHundred >= 10 && restFromHundred < 20) {
       return `раз`;
-    } else if ((count %= 10) === 1) {
+    } else if (restFromTen === 1) {
       return `раз`;
-    } else if ((count %= 10) === 0 || (count %= 10) > 4) {
+    } else if (restFromTen === 0 || restFromTen > 4) {
       return `раз`;
     } else {
       return `раза`;
