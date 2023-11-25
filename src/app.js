@@ -32,7 +32,12 @@ function App({ store }) {
                 <div className='Item-code'>{item.code}</div>
                 <div className='Item-title'>{
                   item.selectCount ?
-                    item.title + `| Выделяли ${item.selectCount} ${store.pluralFunc(item.selectCount, pluralArray2)}` :
+                    item.title
+                    + `| Выделяли ${item.selectCount} 
+                    ${store.pluralFunc(
+                      item.selectCount,
+                      pluralArray
+                    )}` :
                     item.title
                 }</div>
                 <div className='Item-actions'>

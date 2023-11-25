@@ -6,6 +6,8 @@ class Store {
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
     this.uid = this.state.list.length + 1; //уникальный порядковый номер для каждого нового элемента
+    // массив начальных кодов записей
+    this.codeArray = this.state.list.map(item => { return item.code });
   }
 
   /**
@@ -45,10 +47,22 @@ class Store {
   addItem() {
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: this.uid, title: 'Новая запись' }],
+      list: [...this.state.list, { code: this.generateUid(this.uid), title: 'Новая запись' }],
       uid: this.uid += 1,
     })
   };
+
+  /**
+   * Генерация UID
+   */
+  generateUid(uid) {
+    // если id есть в начальном массиве
+    return this.codeArray.includes(uid)
+      // вернуть id больше имеющегося максимального
+      ? this.uid = Math.max(...this.codeArray) + 1
+      // иначе вернуть нужное значение
+      : this.uid;
+  }
 
   /**
    * Удаление записи по коду
