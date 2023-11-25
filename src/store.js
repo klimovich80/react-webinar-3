@@ -84,17 +84,20 @@ class Store {
     })
   }
 
-  pluralFunc(count) {
+  pluralFunc(count, pluralArray) {
+
     const restFromHundred = count %= 100;
     const restFromTen = count %= 10;
+    const [one, many, twoFour] = pluralArray;
+
     if (restFromHundred >= 10 && restFromHundred < 20) {
-      return `раз`;
+      return many;
     } else if (restFromTen === 1) {
-      return `раз`;
+      return one;
     } else if (restFromTen === 0 || restFromTen > 4) {
-      return `раз`;
+      return many;
     } else {
-      return `раза`;
+      return twoFour;
     }
   }
 }

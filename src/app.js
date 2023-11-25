@@ -10,6 +10,8 @@ import './styles.css';
 function App({ store }) {
 
   const list = store.getState().list;
+  // массив содержит варианты слов для  подсчета количества
+  const pluralArray = [`раз`, `раз`, `раза`];
 
   return (
     <div className='App'>
@@ -30,7 +32,7 @@ function App({ store }) {
                 <div className='Item-code'>{item.code}</div>
                 <div className='Item-title'>{
                   item.selectCount ?
-                    item.title + `| Выделяли ${item.selectCount} ${store.pluralFunc(item.selectCount)}` :
+                    item.title + `| Выделяли ${item.selectCount} ${store.pluralFunc(item.selectCount, pluralArray2)}` :
                     item.title
                 }</div>
                 <div className='Item-actions'>
