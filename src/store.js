@@ -98,11 +98,10 @@ class Store {
     })
   }
 
-  pluralFunc(count, pluralArray) {
+  pluralFunc(count, [one, many, twoFour]) {
 
     const restFromHundred = count %= 100;
     const restFromTen = count %= 10;
-    const [one, many, twoFour] = pluralArray;
 
     if (restFromHundred >= 10 && restFromHundred < 20) {
       return many;

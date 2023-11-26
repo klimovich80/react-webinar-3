@@ -11,7 +11,7 @@ function App({ store }) {
 
   const list = store.getState().list;
   // массив содержит варианты слов для  подсчета количества
-  const pluralArray = [`раз`, `раз`, `раза`];
+  const [one, many, twoFour] = [`раз`, `раз`, `раза`];
 
   return (
     <div className='App'>
@@ -36,7 +36,7 @@ function App({ store }) {
                     + `| Выделяли ${item.selectCount} 
                     ${store.pluralFunc(
                       item.selectCount,
-                      pluralArray
+                      [one, many, twoFour]
                     )}` :
                     item.title
                 }</div>
