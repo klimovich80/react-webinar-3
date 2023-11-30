@@ -33,6 +33,18 @@
   line-height: normal;
 }
 
+.Item-quantity {
+  margin: 0;
+  padding: 0 24px 0 62px;
+  color: #404040;
+  text-align: right;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+}
+
 .Item-actions {
   display: flex;
   justify-content: flex-end;

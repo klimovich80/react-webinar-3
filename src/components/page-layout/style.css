@@ -24,4 +24,7 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 2px;
+  border: 1px solid #767676;
+  background: #EFEFEF;
 }

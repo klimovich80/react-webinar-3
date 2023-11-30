@@ -14,12 +14,12 @@ function Controls(props) {
           props.count === 0
             ? <span className={cn(`span`)}>пусто</span>
             : <span className={cn(`span`)}>
-              {props.count} товара\
-              {Intl.NumberFormat("ru-RU", {
-                style: 'currency',
-                currency: 'RUB',
-                minimumFractionDigits: 0,
-              }).format(props.total)}
+              {props.count} товара / {Intl.NumberFormat("ru-RU",
+                {
+                  style: 'currency',
+                  currency: 'RUB',
+                  minimumFractionDigits: 0,
+                }).format(props.total)}
             </span>
         }
 

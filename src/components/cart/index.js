@@ -42,8 +42,8 @@ const Cart = (props) => {
             onDeleteItem={callbacks.onDeleteItem}
           />
           <div className={cn('total')}>
-            <p className={cn('total-description')}>итого:</p>
-            <p className={cn('total-price')}>{
+            <p className={cn('description')}>Итого:</p>
+            <p className={cn('price')}>{
               //TODO вынести функцию
               Intl.NumberFormat("ru-RU", {
                 style: 'currency',
