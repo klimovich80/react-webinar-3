@@ -13,8 +13,6 @@ const Cart = (props) => {
     setList(props.store.getState().list);
   })
 
-  console.log(list);
-
   const callbacks = {
     onDeleteItem: useCallback((code) => {
       props.store.deleteItem(code);
@@ -51,7 +49,7 @@ const Cart = (props) => {
                 style: 'currency',
                 currency: 'RUB',
                 minimumFractionDigits: 0,
-              }).format(props.store.findTotal())};
+              }).format(props.total)};
             </p>
           </div>
         </div>

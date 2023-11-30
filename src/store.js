@@ -28,7 +28,6 @@ class Store {
    * @returns {Object}
    */
   getState() {
-    console.log(`getting state`);
     return this.state;
   }
 
@@ -37,7 +36,6 @@ class Store {
    * @param newState {Object}
    */
   setState(newState) {
-    console.log(newState);
     this.state = newState;
     // Вызываем всех слушателей
     for (const listener of this.listeners) listener();
@@ -48,18 +46,23 @@ class Store {
    */
   addItem(item) {
     const itemExist = this.doesExist(item.code);
-    itemExist
-      ? itemExist.quantity += 1
-      : this.setState({
+    const count = 1;
+
+    if (itemExist) {
+      itemExist.quantity += 1
+      itemExist.total = this.countTotal(itemExist.price, itemExist.quantity)
+    } else {
+      this.setState({
         ...this.state,
         list: [...this.state.list, {
           code: item.code,
           title: item.title,
           price: item.price,
-          quantity: 1
+          quantity: count,
+          total: this.countTotal(item.price, item.quantity || count),
         }]
       });
-    console.log(this.state.list);
+    };
   };
 
   /**
@@ -77,9 +80,13 @@ class Store {
     return this.state.list.find(item => item.code === code)
   }
 
+  countTotal(price, quantity) {
+    return (price * quantity)
+  }
+
   findTotal() {
     const total = this.state.list.reduce(function (result, item) {
-      return result + (item.price * item.quantity)
+      return result + (item.total)
     }, 0);
     return total;
   }

@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import './style.css';
 
+import { cn as bem } from '@bem-react/classname';
+
+const cn = bem('Item')
+
 function Item(props) {
 
   const callbacks = {
@@ -16,14 +20,14 @@ function Item(props) {
   }
 
   return (
-    <div className='Item'>
-      <div className='Item-code'>{
+    <div className={cn()}>
+      <div className={cn(`code`)}>{
         props.item.code
       }</div>
-      <div className='Item-title'>
+      <div className={cn(`title`)}>
         {props.item.title}
       </div>
-      <div className='Item-price'>
+      <div className={cn(`price`)}>
         {Intl.NumberFormat("ru-RU", {
           style: 'currency',
           currency: 'RUB',
@@ -32,11 +36,11 @@ function Item(props) {
       </div>
       {
         props.isCartItem
-          ? <p>{props.item.quantity} шт</p>
+          ? <p className={cn(`quantity`)}>{props.item.quantity} шт</p>
           : ``
       }
-      <div className='Item-actions'>
-        <button onClick={
+      <div className={cn(`actions`)}>
+        <button className={cn(`button`)} onClick={
           props.isCartItem
             ? callbacks.onDelete
             : callbacks.onAdd
