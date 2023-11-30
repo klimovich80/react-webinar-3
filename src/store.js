@@ -28,6 +28,7 @@ class Store {
    * @returns {Object}
    */
   getState() {
+    console.log(`getting state`);
     return this.state;
   }
 
@@ -59,6 +60,17 @@ class Store {
         }]
       });
     console.log(this.state.list);
+  };
+
+  /**
+    * Удаление записи по коду
+    * @param code
+    */
+  deleteItem(code) {
+    this.setState({
+      ...this.state,
+      list: this.state.list.filter(item => item.code !== code)
+    })
   };
 
   doesExist(code) {

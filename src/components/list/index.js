@@ -4,6 +4,7 @@ import Item from "../item";
 import './style.css';
 
 function List({ list, onDeleteItem, isCartItem, onAdd }) {
+
   return (
     <div className='List'>{
       list.map(item =>

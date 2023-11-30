@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { cn as bem } from '@bem-react/classname';
 import List from '../list';
 import './style.css';
@@ -7,11 +7,18 @@ const cn = bem('Cart')
 
 const Cart = (props) => {
 
-  const list = props.store.getState().list;
+  const [list, setList] = useState([])
+
+  useEffect(() => {
+    setList(props.store.getState().list);
+  })
+
+  console.log(list);
 
   const callbacks = {
     onDeleteItem: useCallback((code) => {
-      console.log(`deleting record: ${code}`)
+      props.store.deleteItem(code);
+      setList(props.store.getState().list)
     }),
   }
 
@@ -20,7 +27,7 @@ const Cart = (props) => {
       props.isCartOpen
         ? cn('visible')
         : cn()
-    }>
+    } >
       <div className={cn('layer')}>
         <div className={cn('container')}>
           <div className={cn('head')}>
@@ -39,6 +46,7 @@ const Cart = (props) => {
           <div className={cn('total')}>
             <p className={cn('total-description')}>итого:</p>
             <p className={cn('total-price')}>{
+              //TODO вынести функцию
               Intl.NumberFormat("ru-RU", {
                 style: 'currency',
                 currency: 'RUB',
