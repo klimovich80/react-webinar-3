@@ -1,5 +1,36 @@
 .Controls {
+  margin: 0;
+  padding: 18px 21px 24px;
   display: flex;
   justify-content: flex-end;
-  padding: 20px;
+  align-items: center;
+  border-bottom: 1px dashed #ccc;
+}
+
+.Controls-title {
+  margin: 0;
+  padding: 0 20px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Controls-span {
+  margin: 0;
+  padding: 0 15px 0 20px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.Controls-button {
+  width: 86px;
+  height: 21px;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

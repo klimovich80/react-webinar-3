@@ -39,7 +39,7 @@ function Item(props) {
           : ``
       }
       <div className={cn(`actions`)}>
-        <button className={cn(`button`)} onClick={
+        <button className={`${cn('button')} button`} onClick={
           props.isCartItem
             ? callbacks.onDelete
             : callbacks.onAdd

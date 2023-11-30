@@ -10,16 +10,21 @@ function Controls(props) {
   return (
     <div className={cn()}>
       <p className={cn(`title`)}> В корзине:
-        <span className={cn(`span`)}>
-          {props.count} товара\
-          {Intl.NumberFormat("ru-RU", {
-            style: 'currency',
-            currency: 'RUB',
-            minimumFractionDigits: 0,
-          }).format(props.total)}
-        </span>
+        {
+          props.count === 0
+            ? <span className={cn(`span`)}>пусто</span>
+            : <span className={cn(`span`)}>
+              {props.count} товара\
+              {Intl.NumberFormat("ru-RU", {
+                style: 'currency',
+                currency: 'RUB',
+                minimumFractionDigits: 0,
+              }).format(props.total)}
+            </span>
+        }
+
       </p>
-      <button className={cn(`button`)} onClick={() => props.onCartOpen()}>Перейти</button>
+      <button className={cn('button')} onClick={() => props.onCartOpen()}>Перейти</button>
     </div>
   )
 }

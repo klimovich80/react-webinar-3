@@ -31,7 +31,7 @@ const Cart = (props) => {
           <div className={cn('head')}>
             <h2 className={cn('title')}>Корзина</h2>
             <button
-              className={cn('button')}
+              className={`${cn('button')} button`}
               onClick={props.onCartClose}>
               Закрыть
             </button>
