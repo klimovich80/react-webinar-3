@@ -44,7 +44,6 @@ const Cart = (props) => {
           <div className={cn('total')}>
             <p className={cn('description')}>Итого:</p>
             <p className={cn('price')}>{
-              //TODO вынести функцию
               Intl.NumberFormat("ru-RU", {
                 style: 'currency',
                 currency: 'RUB',
