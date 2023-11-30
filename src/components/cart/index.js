@@ -49,7 +49,7 @@ const Cart = (props) => {
                 style: 'currency',
                 currency: 'RUB',
                 minimumFractionDigits: 0,
-              }).format(props.total)};
+              }).format(props.store.findTotal())};
             </p>
           </div>
         </div>

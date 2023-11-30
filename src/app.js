@@ -49,7 +49,6 @@ function App({ store, cartItems }) {
       <Head title='Магазин' />
       <Cart
         store={cartItems}
-        total={total}
         isCartOpen={isCartOpen}
         onCartClose={callbacks.onCartClose}
         isCartItem={true}
