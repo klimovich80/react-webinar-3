@@ -9,13 +9,14 @@ function Item(props) {
       e.stopPropagation();
       props.onDelete(props.item.code);
     },
-    onAdd: () => {
-      console.log(`adding item: ${props.item.title}`)
+    onAdd: (e) => {
+      e.stopPropagation();
+      props.onAdd(props.item);
     },
   }
 
   return (
-    <div div className={'Item'} >
+    <div className='Item'>
       <div className='Item-code'>{
         props.item.code
       }</div>
@@ -29,6 +30,11 @@ function Item(props) {
           minimumFractionDigits: 0,
         }).format(props.item.price)}
       </div>
+      {
+        props.isCartItem
+          ? <p>{props.item.quantity} шт</p>
+          : ``
+      }
       <div className='Item-actions'>
         <button onClick={
           props.isCartItem

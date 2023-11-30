@@ -1,3 +1,4 @@
+
 import { generateCode } from "./utils";
 
 /**
@@ -35,6 +36,7 @@ class Store {
    * @param newState {Object}
    */
   setState(newState) {
+    console.log(newState);
     this.state = newState;
     // Вызываем всех слушателей
     for (const listener of this.listeners) listener();
@@ -43,12 +45,32 @@ class Store {
   /**
    * Добавление новой записи
    */
-  addItem() {
-    this.setState({
-      ...this.state,
-      list: [...this.state.list, { code: generateCode(), title: 'Новая запись' }]
-    })
+  addItem(item) {
+    const itemExist = this.doesExist(item.code);
+    itemExist
+      ? itemExist.quantity += 1
+      : this.setState({
+        ...this.state,
+        list: [...this.state.list, {
+          code: item.code,
+          title: item.title,
+          price: item.price,
+          quantity: 1
+        }]
+      });
+    console.log(this.state.list);
   };
+
+  doesExist(code) {
+    return this.state.list.find(item => item.code === code)
+  }
+
+  findTotal() {
+    const total = this.state.list.reduce(function (result, item) {
+      return result + (item.price * item.quantity)
+    }, 0);
+    return total;
+  }
 
   /**
    * Удаление записи по коду

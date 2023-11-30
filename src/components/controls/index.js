@@ -11,11 +11,11 @@ function Controls({ onCartOpen }) {
 }
 
 Controls.propTypes = {
-  onAdd: PropTypes.func
+  onCartOpen: PropTypes.func
 };
 
 Controls.defaultProps = {
-  onAdd: () => { }
+  onCartOpen: () => { }
 }
 
 export default React.memo(Controls);

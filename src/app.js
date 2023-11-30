@@ -10,7 +10,7 @@ import Cart from './components/cart';
  * @param store {Store} Хранилище состояния приложения
  * @returns {React.ReactElement}
  */
-function App({ store }) {
+function App({ store, cartItems }) {
 
   const [isCartOpen, setCartOpen] = useState(false);
 
@@ -19,7 +19,11 @@ function App({ store }) {
   const callbacks = {
     onDeleteItem: useCallback((code) => {
       store.deleteItem(code);
-    }, [store]),
+    }, [store, cartItems]),
+
+    onAdd: useCallback((item) => {
+      cartItems.addItem(item)
+    }, [cartItems]),
 
     onCartOpen: useCallback(() => {
       setCartOpen(true);
@@ -35,7 +39,7 @@ function App({ store }) {
     <PageLayout>
       <Head title='Приложение на чистом JS' />
       <Cart
-        store={store}
+        store={cartItems}
         isCartOpen={isCartOpen}
         onCartClose={callbacks.onCartClose}
         isCartItem={true}
@@ -47,6 +51,7 @@ function App({ store }) {
         list={list}
         onDeleteItem={callbacks.onDeleteItem}
         isCartItem={false}
+        onAdd={callbacks.onAdd}
       />
     </PageLayout>
   );
