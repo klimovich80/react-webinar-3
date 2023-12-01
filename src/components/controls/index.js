@@ -30,6 +30,8 @@ function Controls(props) {
 }
 
 Controls.propTypes = {
+  count: PropTypes.number,
+  total: PropTypes.number,
   onCartOpen: PropTypes.func
 };
 

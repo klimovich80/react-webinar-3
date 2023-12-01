@@ -1,4 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react'
+import PropTypes from 'prop-types';
 import { cn as bem } from '@bem-react/classname';
 import List from '../list';
 import './style.css';
@@ -17,7 +18,7 @@ const Cart = (props) => {
     onDeleteItem: useCallback((code) => {
       props.store.deleteItem(code);
       setList(props.store.getState().list)
-    }),
+    })
   }
 
   return (
@@ -57,4 +58,16 @@ const Cart = (props) => {
   )
 }
 
-export default Cart
+Cart.propTypes = {
+  store: PropTypes.shape({}).isRequired,
+  isCartOpen: PropTypes.bool.isRequired,
+  isCartItem: PropTypes.bool.isRequired,
+  onCartClose: PropTypes.func.isRequired,
+  onDeleteItem: PropTypes.func.isRequired,
+};
+
+Cart.defaultProps = {
+  onDeleteItem: () => { },
+  onCartClose: () => { }
+}
+export default React.memo(Cart);
