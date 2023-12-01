@@ -30,9 +30,9 @@ function Controls(props) {
 }
 
 Controls.propTypes = {
-  count: PropTypes.number,
-  total: PropTypes.number,
-  onCartOpen: PropTypes.func
+  count: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  onCartOpen: PropTypes.func.isRequired
 };
 
 Controls.defaultProps = {
