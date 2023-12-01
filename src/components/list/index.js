@@ -6,17 +6,17 @@ import { cn as bem } from '@bem-react/classname';
 
 const cn = bem('List')
 
-function List({ list, onDeleteItem, isCartItem, onAdd }) {
+function List(props) {
 
   return (
     <div className={cn()}>{
-      list.map(item =>
+      props.list.map(item =>
         <div key={item.code} className={cn(`item`)}>
           <Item
             item={item}
-            onDelete={onDeleteItem}
-            isCartItem={isCartItem}
-            onAdd={onAdd}
+            onDelete={props.onDeleteItem}
+            isCartItem={props.isCartItem}
+            onAdd={props.onAdd}
           />
         </div>
       )}
@@ -29,14 +29,13 @@ List.propTypes = {
     code: PropTypes.number
   })).isRequired,
   onDeleteItem: PropTypes.func,
+  isCartItem: PropTypes.bool.isRequired,
   onAdd: PropTypes.func,
 };
 
 List.defaultProps = {
-  onDeleteItem: () => {
-  },
-  onAdd: () => {
-  }
+  onDeleteItem: () => { },
+  onAdd: () => { }
 }
 
 export default React.memo(List);
