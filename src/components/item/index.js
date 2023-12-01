@@ -63,12 +63,14 @@ Item.propTypes = {
     quantity: PropTypes.number,
     price: PropTypes.number
   }).isRequired,
-  onDelete: PropTypes.func
+  isCartItem: PropTypes.bool.isRequired,
+  onDelete: PropTypes.func,
+  onAdd: PropTypes.func
 };
 
 Item.defaultProps = {
-  onDelete: () => {
-  }
+  onDelete: () => { },
+  onAdd: () => { }
 }
 
 export default React.memo(Item);
