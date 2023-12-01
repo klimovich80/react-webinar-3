@@ -35,13 +35,13 @@ function App({ store, cartItems }) {
       setCartOpen(true);
       setCount(cartItems.getState().list.length);
       setTotal(cartItems.findTotal());
-    }, [store]),
+    }, [cartItems]),
 
     onCartClose: useCallback(() => {
       setCartOpen(false);
       setCount(cartItems.getState().list.length)
       setTotal(cartItems.findTotal());
-    }, [store]),
+    }, [cartItems]),
   }
 
   return (
