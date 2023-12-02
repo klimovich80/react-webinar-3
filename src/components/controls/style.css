@@ -1,6 +1,6 @@
 .Controls {
   margin: 0;
-  padding: 18px 21px 24px;
+  padding: 18px 16px 24px 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -9,7 +9,7 @@
 
 .Controls-title {
   margin: 0;
-  padding: 0 20px;
+  padding: 0;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -18,7 +18,7 @@
 
 .Controls-span {
   margin: 0;
-  padding: 0 15px 0 20px;
+  padding: 0 17px 0 19px;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -26,7 +26,9 @@
 }
 
 .Controls-button {
-  width: 86px;
+  margin: 0;
+  padding: 0;
+  width: 81px;
   height: 21px;
   text-align: center;
   font-size: 13px;
