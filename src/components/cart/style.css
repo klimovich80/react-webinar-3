@@ -32,8 +32,8 @@
 }
 
 .Cart-head {
-  margin: 0;
-  padding: 20px 20px 23px;
+  margin: 0 0 70px;
+  padding: 20px 28px 23px 20px;
   max-width: 960px;
   background: rgba(245, 245, 245, 1);
   border-radius: 10px 10px 0 0;
@@ -45,15 +45,19 @@
 .Cart-title {
   margin: 0;
   padding: 0;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .Cart-total {
   margin: 0;
-  padding: 20px 120px 89px;
+  padding: 25px 108px 89px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 53px;
+  gap: 50px;
 }
 
 .Cart-description {
