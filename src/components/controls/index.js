@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import './style.css';
 import { cn as bem } from '@bem-react/classname';
+import { plural } from "../../utils";
 
 const cn = bem('Controls')
 
@@ -14,7 +15,11 @@ function Controls(props) {
           props.count === 0
             ? <span className={cn(`span`)}>пусто</span>
             : <span className={cn(`span`)}>
-              {props.count} товара / {Intl.NumberFormat("ru-RU",
+              {props.count} {plural(props.count, {
+                one: 'товар',
+                few: 'товара',
+                many: 'товаров'
+              })} / {Intl.NumberFormat("ru-RU",
                 {
                   style: 'currency',
                   currency: 'RUB',
