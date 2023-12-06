@@ -6,8 +6,8 @@ import ReactPaginate from 'react-paginate';
 
 const Navigation = (props) => {
 
-  const handlePageClick = () => {
-    console.log('handling page click');
+  const handlePageClick = (e) => {
+    props.onSelectPage(e.selected)
   }
 
   const cn = bem('Navigation')
@@ -23,9 +23,9 @@ const Navigation = (props) => {
         previousLabel={null}
         pageClassName={cn(`item`)}
         pageLinkClassName={cn(`link`)}
-        previousClassName={cn(`item`)}
+        previousClassName={cn(`item-hidden`)}
         previousLinkClassName={cn(`link`)}
-        nextClassName={cn(`item`)}
+        nextClassName={cn(`item-hidden`)}
         nextLinkClassName={cn(`link`)}
         breakLabel="..."
         breakClassName={cn(`item`)}
@@ -33,7 +33,7 @@ const Navigation = (props) => {
         containerClassName={cn()}
         activeClassName="active-item"
         renderOnZeroPageCount={null}
-        initialPage={INITIAL_PAGE}
+        initialPage={INITIAL_PAGE - 1}
       />
     </>
   );

@@ -17,8 +17,8 @@ function Main() {
   const [recentPage, setRecentPage] = useState(INITIAL_PAGE)
 
   useEffect(() => {
-    store.actions.catalog.load();
-  }, []);
+    store.actions.catalog.load(recentPage, STEP);
+  }, [recentPage]);
 
   const select = useSelector(state => ({
     list: state.catalog.list,
@@ -35,8 +35,7 @@ function Main() {
   }
 
   const selectPage = (data) => {
-    console.log(data.target.innerHTML);
-    setRecentPage(Number(data.target.innerHTML))
+    setRecentPage(Number(data))
   }
 
   const renders = {
@@ -53,7 +52,6 @@ function Main() {
       <List list={select.list} renderItem={renders.item} />
       <Navigation
         pages={pagesQuantity(step, select.count) || 1}
-        recentPage={recentPage}
         onSelectPage={selectPage}
       />
     </PageLayout>
