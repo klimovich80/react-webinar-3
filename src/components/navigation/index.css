@@ -1,0 +1,34 @@
+.Navigation {
+  margin: 0;
+  padding: 0;
+}
+
+.Navigation-items {
+  margin: 0;
+  padding: 22px;
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.Navigation-item {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  width: 20px;
+  aspect-ratio: 1/1;
+  text-align: center;
+}
+
+.Navigation-link {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 1/1;
+  text-decoration: none;
+}
+
+.Navigation-item:hover {
+  background-color: rgba(225, 225, 225, 1);
+  cursor: pointer;
+}
