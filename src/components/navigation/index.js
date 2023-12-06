@@ -1,22 +1,46 @@
 import React, { memo } from 'react'
 import { cn as bem } from '@bem-react/classname';
-import { Link } from 'react-router-dom';
+import { INITIAL_PAGE } from '../../constants';
 import './index.css'
 
-const Navigation = () => {
+const Navigation = (props) => {
+
+  const setLayout = (page) => {
+    return (
+      <li className={cn('item')} key={page}>
+        <button
+          className={
+            props.recentPage === page
+              ? cn('button active-button')
+              : cn('button')
+          }
+          onClick={props.onSelectPage}
+          value={page}
+        >
+          {page}
+        </button>
+      </li >
+    )
+  }
+
+  const getContent = (count) => {
+
+    let content = [];
+    content.push(setLayout(INITIAL_PAGE))
+    if (props.pages > 1) {
+      for (let i = INITIAL_PAGE + 1; i < count; i++) {
+        content.push(setLayout(i));
+      }
+      content.push(setLayout(count)
+      )
+    }
+    return content;
+  };
 
   const cn = bem('Navigation')
   return (
     <ul className={cn('items')}>
-      <li className={cn('item')}>
-        <Link className={cn('link')} to='/'>1</Link>
-      </li>
-      <li className={cn('item')}>
-        <Link className={cn('link')} to='/'>2</Link>
-      </li>
-      <li className={cn('item')}>
-        <Link className={cn('link')} to='/'>3</Link>
-      </li>
+      {getContent(props.pages)}
     </ul>
   )
 }

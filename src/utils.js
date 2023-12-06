@@ -33,3 +33,13 @@ export function codeGenerator(start = 0) {
 export function numberFormat(value, locale = 'ru-RU', options = {}) {
   return new Intl.NumberFormat(locale, options).format(value);
 }
+
+/**
+ * Возвращает количество страниц для отображения массива числа
+ * @param step {Number}
+ * @param total {Number}
+ * @returns {Number}
+ */
+export function pagesQuantity(step, total) {
+  return Math.ceil(total / step);
+}
