@@ -44,8 +44,6 @@ BasketTool.propTypes = {
 };
 
 BasketTool.defaultProps = {
-  onOpen: () => { },
-  onBackToMain: () => { },
   sum: 0,
   amount: 0
 }

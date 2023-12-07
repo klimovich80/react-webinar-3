@@ -38,10 +38,12 @@ Item.propTypes = {
     price: PropTypes.number
   }).isRequired,
   onAdd: PropTypes.func,
+  onOpenInfo: PropTypes.func,
 };
 
 Item.defaultProps = {
   onAdd: () => { },
+  onOpenInfo: () => { },
 }
 
 export default memo(Item);

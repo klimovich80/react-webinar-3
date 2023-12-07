@@ -1,11 +1,12 @@
 import React, { memo, useEffect, useState } from 'react'
+import propTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { cn as bem } from '@bem-react/classname';
 import { numberFormat } from "../../utils";
 import './index.css'
 const cn = bem('ItemInfo');
 
-const ItemInfo = (props) => {
+function ItemInfo(props) {
 
   const params = useParams();
 
@@ -56,6 +57,23 @@ const ItemInfo = (props) => {
       >Добавить</button>
     </section>
   )
+}
+
+ItemInfo.propTypes = {
+  params: propTypes.shape({
+    id: propTypes.oneOfType([propTypes.string, propTypes.number])
+  }),
+  description: propTypes.string,
+  country: propTypes.string,
+  countryCode: propTypes.string,
+  category: propTypes.string,
+  edition: propTypes.number,
+  price: propTypes.number,
+  onAdd: propTypes.func,
+}
+
+ItemInfo.defaultProps = {
+  onAdd: () => { },
 }
 
 export default memo(ItemInfo)

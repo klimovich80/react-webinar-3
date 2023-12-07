@@ -47,10 +47,12 @@ ItemBasket.propTypes = {
     amount: PropTypes.number
   }).isRequired,
   onRemove: propTypes.func,
+  onOpenInfo: propTypes.func,
 }
 
 ItemBasket.defaultProps = {
   onRemove: () => { },
+  onOpenInfo: () => { },
 }
 
 export default memo(ItemBasket);

@@ -38,11 +38,9 @@ function Main() {
     openModalBasket: useCallback(() => store.actions.modals.open('basket'), [store]),
     // Возврат на главную
     backToMain: useCallback(() => navigate('/')),
+    // Навигация по страницам
+    selectPage: useCallback((data) => setRecentPage(Number(data)))
 
-  }
-
-  const selectPage = (data) => {
-    setRecentPage(Number(data))
   }
 
   const renders = {
@@ -72,7 +70,7 @@ function Main() {
             />
             <Navigation
               pages={pagesQuantity(STEP, select.count) || 1}
-              onSelectPage={selectPage}
+              onSelectPage={callbacks.selectPage}
             />
           </PageLayout>
         )}
