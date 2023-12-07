@@ -5,12 +5,16 @@ import { numberFormat, plural } from "../../utils";
 import './style.css';
 import { Link } from "react-router-dom";
 
-function BasketTool({ sum, amount, onOpen }) {
+function BasketTool({ sum, amount, onOpen, onBackToMain }) {
   const cn = bem('BasketTool');
   return (
     <div className={cn()}>
       <nav className={cn('navigation')}>
-        <Link className={cn('link')} to='/'>Главная</Link>
+        <Link
+          className={cn('link')}
+          to='/'
+          onClick={onBackToMain}
+        >Главная</Link>
       </nav>
       <div className={cn('container')}>
         <span className={cn('label')}>В корзине:</span>

@@ -19,6 +19,10 @@
   padding: 20px 10px;
 }
 
+.Item-title:hover {
+  cursor: pointer;
+}
+
 .Item-actions {
   padding: 20px 20px 20px 10px;
   display: flex;

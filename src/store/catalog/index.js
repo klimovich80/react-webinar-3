@@ -23,6 +23,14 @@ class Catalog extends StoreModule {
       list: json.result.items,
       count: json.result.count
     }, 'Загружены товары из АПИ');
+    return response;
+  }
+
+  async loadItem(itemId) {
+    const url = `/api/v1/articles/${itemId}?fields=*,madeIn(title,code),category(title)`
+    const response = await fetch(url);
+    const json = await response.json();
+    return json.result;
   }
 }
 
