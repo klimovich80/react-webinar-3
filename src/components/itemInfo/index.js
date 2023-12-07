@@ -20,19 +20,19 @@ const ItemInfo = (props) => {
   useEffect(() => {
     props.store.actions.catalog.loadItem(params.id)
       .then(res => {
-        console.log(res);
         setDescription(res.description)
         setCountry(res.madeIn.title)
         setCountryCode(res.madeIn.code)
         setCategory(res.category.title)
         setEdition(res.edition)
         setPrice(res.price)
+        props.setItemTitle(res.title)
       })
       .catch(err => console.log(err))
   }, [])
 
   const callbacks = {
-    onAdd: (e) => props.onAdd(itemInfo._id)
+    onAdd: (e) => props.onAdd(params.id)
   }
 
   return (

@@ -21,15 +21,6 @@ function Basket() {
     removeFromBasket: useCallback(_id => store.actions.basket.removeFromBasket(_id), [store]),
     // Закрытие любой модалки
     closeModal: useCallback(() => store.actions.modals.close(), [store]),
-    //
-    openItemInfo: useCallback((itemId) => {
-      store.actions.catalog.loadItem(itemId)
-        .then(() => {
-          callbacks.closeModal;
-          console.log(`opening item info ${itemId}`);
-        }
-        )
-    })
   }
 
   const renders = {
@@ -37,7 +28,7 @@ function Basket() {
       return <ItemBasket
         item={item}
         onRemove={callbacks.removeFromBasket}
-        onItemSelect={callbacks.openItemInfo}
+        onClose={callbacks.closeModal}
       />
     }, [callbacks.removeFromBasket]),
   };

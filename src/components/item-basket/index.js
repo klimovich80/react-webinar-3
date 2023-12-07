@@ -9,13 +9,13 @@ import { useNavigate } from 'react-router-dom';
 function ItemBasket(props) {
 
   const navigate = useNavigate();
-  console.log(props);
 
   const cn = bem('ItemBasket');
 
   const callbacks = {
     onRemove: (e) => props.onRemove(props.item._id),
     onOpenInfo: () => {
+      props.onClose();
       navigate(`/item/${props.item._id}`)
     }
   };

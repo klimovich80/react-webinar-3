@@ -4,11 +4,9 @@ import { cn as bem } from '@bem-react/classname';
 import { numberFormat, plural } from "../../utils";
 import './style.css';
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 function BasketTool({ sum, amount, onOpen, onBackToMain }) {
 
-  const navigate = useNavigate();
   const cn = bem('BasketTool');
 
   return (
@@ -32,7 +30,7 @@ function BasketTool({ sum, amount, onOpen, onBackToMain }) {
             : `пусто`
           }
         </span>
-        <button onClick={onOpen}>Перейти</button>
+        <button className={cn(`button`)} onClick={onOpen}>Перейти</button>
       </div>
     </div >
   );

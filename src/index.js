@@ -5,8 +5,6 @@ import { StoreContext } from "./store/context";
 
 const store = new Store();
 
-console.log(store);
-
 const root = createRoot(document.getElementById('root'));
 
 // Первый рендер приложения

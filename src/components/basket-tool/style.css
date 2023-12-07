@@ -28,3 +28,9 @@
   -webkit-text-decoration-line: underline;
   text-decoration-line: underline;
 }
+
+.BasketTool-button {
+  margin: 0;
+  padding: 0;
+  width: 80px;
+}
