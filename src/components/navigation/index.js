@@ -1,4 +1,5 @@
-import React, { memo } from 'react'
+import React, { memo } from 'react';
+import propTypes from 'prop-types';
 import { cn as bem } from '@bem-react/classname';
 import { INITIAL_PAGE } from '../../constants';
 import './index.css'
@@ -37,6 +38,10 @@ const Navigation = (props) => {
       />
     </>
   );
+}
+
+Navigation.propTypes = {
+  pages: propTypes.number
 }
 
 export default memo(Navigation);
