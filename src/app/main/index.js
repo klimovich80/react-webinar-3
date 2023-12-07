@@ -1,4 +1,5 @@
 import { memo, useCallback, useEffect, useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Item from "../../components/item";
 import PageLayout from "../../components/page-layout";
 import Head from "../../components/head";
@@ -13,13 +14,12 @@ import Loader from '../../components/loader';
 import ItemInfo from '../../components/itemInfo';
 
 function Main() {
+  const navigate = useNavigate();
 
   const store = useStore();
   const [step, setStep] = useState(STEP)
   const [recentPage, setRecentPage] = useState(INITIAL_PAGE)
   const [isLoading, setLoading] = useState(true)
-  const [isPageInfo, setPageInfo] = useState(false)
-  const [itemInfo, setItemInfo] = useState({})
 
   useEffect(() => {
     store.actions.catalog.load(recentPage, STEP)
@@ -40,17 +40,15 @@ function Main() {
     // Открытие модалки корзины
     openModalBasket: useCallback(() => store.actions.modals.open('basket'), [store]),
     //
-    backToMain: useCallback(() => setPageInfo(false)),
+    backToMain: useCallback(() => navigate(-1)),
     //
     openItemPage: useCallback((itemId) => {
-      setLoading(true)
       store.actions.catalog.loadItem(itemId)
         .then((res) => {
           setItemInfo(res);
           setPageInfo(true);
         })
         .catch(err => console.log(err))
-        .finally(setLoading(false))
     })
   }
 
@@ -69,38 +67,51 @@ function Main() {
   };
 
   return (
-    (isLoading
-      ? <PageLayout>
-        <Head title='Магазин' />
-        <Loader />
-      </PageLayout>
-      : <PageLayout>
-        {
-          isPageInfo
-            ? <Head title={itemInfo.title} />
-            : <Head title='Магазин' />
-        }
-        <BasketTool
-          onBackToMain={callbacks.backToMain}
-          onOpen={callbacks.openModalBasket}
-          amount={select.amount}
-          sum={select.sum} />
-        {isPageInfo
-          ? <ItemInfo
-            item={itemInfo}
-            onAdd={callbacks.addToBasket}
-          />
-          : <>
-            <List list={select.list} renderItem={renders.item} />
+    <Routes>
+      <Route path='/'
+        element={(isLoading
+          ? <PageLayout>
+            <Head title='Магазин' />
+            <Loader />
+          </PageLayout>
+          : <PageLayout>
+            <Head title='Магазин' />
+            <BasketTool
+              onBackToMain={callbacks.backToMain}
+              onOpen={callbacks.openModalBasket}
+              amount={select.amount}
+              sum={select.sum}
+            />
+            <List
+              list={select.list}
+              renderItem={renders.item}
+            />
             <Navigation
               pages={pagesQuantity(step, select.count) || 1}
               onSelectPage={selectPage}
             />
-          </>
+          </PageLayout>
+        )}
+      />
+      <Route
+        path='/item/:id'
+        element={
+          <PageLayout>
+            <Head title='Название товара' />
+            <BasketTool
+              onBackToMain={callbacks.backToMain}
+              onOpen={callbacks.openModalBasket}
+              amount={select.amount}
+              sum={select.sum}
+            />
+            <ItemInfo
+              store={store}
+              onAdd={callbacks.addToBasket}
+            />
+          </PageLayout>
         }
-
-      </PageLayout>
-    )
+      />
+    </Routes>
   );
 }
 

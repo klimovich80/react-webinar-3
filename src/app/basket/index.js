@@ -1,4 +1,4 @@
-import {memo, useCallback} from 'react';
+import { memo, useCallback } from 'react';
 import ItemBasket from "../../components/item-basket";
 import List from "../../components/list";
 import ModalLayout from "../../components/modal-layout";
@@ -21,18 +21,31 @@ function Basket() {
     removeFromBasket: useCallback(_id => store.actions.basket.removeFromBasket(_id), [store]),
     // Закрытие любой модалки
     closeModal: useCallback(() => store.actions.modals.close(), [store]),
+    //
+    openItemInfo: useCallback((itemId) => {
+      store.actions.catalog.loadItem(itemId)
+        .then(() => {
+          callbacks.closeModal;
+          console.log(`opening item info ${itemId}`);
+        }
+        )
+    })
   }
 
   const renders = {
     itemBasket: useCallback((item) => {
-      return <ItemBasket item={item} onRemove={callbacks.removeFromBasket}/>
+      return <ItemBasket
+        item={item}
+        onRemove={callbacks.removeFromBasket}
+        onItemSelect={callbacks.openItemInfo}
+      />
     }, [callbacks.removeFromBasket]),
   };
 
   return (
     <ModalLayout title='Корзина' onClose={callbacks.closeModal}>
-      <List list={select.list} renderItem={renders.itemBasket}/>
-      <BasketTotal sum={select.sum}/>
+      <List list={select.list} renderItem={renders.itemBasket} />
+      <BasketTotal sum={select.sum} />
     </ModalLayout>
   );
 }

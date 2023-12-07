@@ -1,0 +1,28 @@
+.paragraph {
+  margin: 0;
+  padding: 0 0 20px 0;
+}
+
+.ItemInfo {
+  margin: 0;
+  padding: 0 40px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.ItemInfo-span {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+
+.ItemInfo-price {
+  margin: 0;
+  padding: 0 0 20px 0;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

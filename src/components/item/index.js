@@ -3,14 +3,16 @@ import PropTypes from "prop-types";
 import { cn as bem } from '@bem-react/classname';
 import { numberFormat } from "../../utils";
 import './style.css';
+import { useNavigate } from "react-router-dom";
 
 function Item(props) {
 
   const cn = bem('Item');
+  const navigate = useNavigate();
 
   const callbacks = {
     onAdd: (e) => props.onAdd(props.item._id),
-    onOpenInfo: (e) => props.onItemSelect(props.item._id)
+    onOpenInfo: (e) => navigate(`/item/${props.item._id}`)
   }
 
   return (

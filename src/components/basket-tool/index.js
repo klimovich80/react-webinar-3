@@ -4,9 +4,13 @@ import { cn as bem } from '@bem-react/classname';
 import { numberFormat, plural } from "../../utils";
 import './style.css';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function BasketTool({ sum, amount, onOpen, onBackToMain }) {
+
+  const navigate = useNavigate();
   const cn = bem('BasketTool');
+
   return (
     <div className={cn()}>
       <nav className={cn('navigation')}>
@@ -36,12 +40,14 @@ function BasketTool({ sum, amount, onOpen, onBackToMain }) {
 
 BasketTool.propTypes = {
   onOpen: PropTypes.func.isRequired,
+  onBackToMain: PropTypes.func.isRequired,
   sum: PropTypes.number,
   amount: PropTypes.number
 };
 
 BasketTool.defaultProps = {
   onOpen: () => { },
+  onBackToMain: () => { },
   sum: 0,
   amount: 0
 }
