@@ -46,7 +46,8 @@ const Navigation = (props) => {
 }
 
 Navigation.propTypes = {
-  pages: propTypes.number
+  pages: propTypes.number,
+  recentPage: propTypes.number
 }
 
 export default memo(Navigation);
