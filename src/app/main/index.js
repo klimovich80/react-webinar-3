@@ -20,7 +20,7 @@ function Main() {
   const [itemTitle, setItemTitle] = useState('Название товара')
 
   useEffect(() => {
-    store.actions.catalog.load(recentPage, STEP)
+    store.actions.catalog.load(recentPage - 1, STEP)
       .catch(err => console.log(err))
   }, [recentPage]);
 
@@ -71,6 +71,7 @@ function Main() {
             <Navigation
               pages={pagesQuantity(STEP, select.count) || 1}
               onSelectPage={callbacks.selectPage}
+              recentPage={recentPage}
             />
           </PageLayout>
         )}

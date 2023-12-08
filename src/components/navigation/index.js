@@ -3,40 +3,45 @@ import propTypes from 'prop-types';
 import { cn as bem } from '@bem-react/classname';
 import { INITIAL_PAGE } from '../../constants';
 import './index.css'
-import ReactPaginate from 'react-paginate';
+import { pagination } from '../../utils';
 
 const Navigation = (props) => {
 
-  const handlePageClick = (e) => {
-    props.onSelectPage(e.selected)
+  const cn = bem('Navigation');
+
+  const callbacks = {
+    handlePageClick: (e) => {
+      props.onSelectPage(Number(e.target.innerHTML))
+    },
   }
 
-  const cn = bem('Navigation')
+  let element = (<></>)
+  const pages = pagination(INITIAL_PAGE, props.recentPage, props.pages)
+  let keyGen = props.pages + 1
 
   return (
-    <>
-      <ReactPaginate
-        nextLabel={null}
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={1}
-        pageCount={props.pages}
-        previousLabel={null}
-        pageClassName={cn(`item`)}
-        pageLinkClassName={cn(`link`)}
-        previousClassName={cn(`item-hidden`)}
-        previousLinkClassName={cn(`link`)}
-        nextClassName={cn(`item-hidden`)}
-        nextLinkClassName={cn(`link`)}
-        breakLabel="..."
-        breakClassName={cn(`item`)}
-        breakLinkClassName={cn(`link`)}
-        containerClassName={cn()}
-        activeClassName="active-item"
-        renderOnZeroPageCount={null}
-        initialPage={INITIAL_PAGE - 1}
-      />
-    </>
+    <nav className={cn()}>
+      <ul className={cn('items')}>
+        {
+          pages.map(function (page) {
+            typeof (page) === 'number'
+              ? element = (<li
+                key={page}
+                className={
+                  page === props.recentPage
+                    ? cn('item active-item')
+                    : cn('item')
+                }
+                onClick={callbacks.handlePageClick}
+              >{page}</li>)
+              : element = (<p key={keyGen++}
+                className={cn('dots')}
+              >{page}</p>)
+            return element
+          })
+        }
+      </ul>
+    </nav>
   );
 }
 

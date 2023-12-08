@@ -44,3 +44,71 @@ export function numberFormat(value, locale = 'ru-RU', options = {}) {
 export function pagesQuantity(step, total) {
   return Math.ceil(total / step);
 }
+
+/**
+ * Возвращает количество страниц для отображения массива числа
+ * @param current {Number}
+ * @param total {Number}
+ * @returns {Array}
+ */
+export function pagination(firstPage, current, total) {
+
+  const pages = [];
+  const dots = `...`;
+  const noDotsLimit = 5;
+
+  pages.push(firstPage)
+  if (total === firstPage) {
+    return pages
+  }
+  if (current > total) {
+    current = total
+  }
+  if (total <= noDotsLimit) {
+    for (i = 2; i <= total; i++) {
+      pages.push(i)
+    }
+    return pages
+  }
+  if (current === firstPage) {
+    pages.push(current + 1)
+    pages.push(current + 2)
+    pages.push(dots)
+  }
+  if (current === firstPage + 1) {
+    pages.push(current)
+    pages.push(current + 1)
+    pages.push(dots)
+  }
+  if (current === firstPage + 2) {
+    pages.push(current - 1)
+    pages.push(current)
+    pages.push(current + 1)
+    pages.push(dots)
+  }
+  if (current >= firstPage + 3 && current < (total - 2)) {
+    pages.push(dots)
+    pages.push(current - 1)
+    pages.push(current)
+    pages.push(current + 1)
+    pages.push(dots)
+  }
+  if (current === (total - 2) && current != total) {
+    pages.push(dots)
+    pages.push(current - 1)
+    pages.push(current)
+    pages.push(current + 1)
+  }
+  if (current === (total - 1) && current != total) {
+    pages.push(dots)
+    pages.push(current - 1)
+    pages.push(current)
+  }
+  if (current === total) {
+    pages.push(dots)
+    pages.push(current - 2)
+    pages.push(current - 1)
+  }
+  pages.push(total)
+  return pages
+}
