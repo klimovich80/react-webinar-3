@@ -1,15 +1,15 @@
-import {memo} from "react";
+import { memo } from "react";
 import PropTypes from 'prop-types';
-import {cn as bem} from '@bem-react/classname';
-import {numberFormat} from "../../utils";
+import { cn as bem } from '@bem-react/classname';
+import { numberFormat } from "../../utils";
 import './style.css';
 
-function BasketTotal({sum}) {
+function BasketTotal({ sum }) {
   const cn = bem('BasketTotal');
   return (
     <div className={cn()}>
-      <span className={cn('cell')}>Итого</span>
-      <span className={cn('cell')}> {numberFormat(sum)} ₽</span>
+      <span className={cn(`cell ${cn(`total`)}`)}>Итого</span>
+      <span className={cn(`cell ${cn(`price`)}`)}> {numberFormat(sum)} ₽</span>
       <span className={cn('cell')}></span>
     </div>
   );

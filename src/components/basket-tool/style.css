@@ -15,6 +15,12 @@
 .BasketTool-total {
   font-weight: bold;
   margin: 0 20px;
+  color: #000;
+  font-family: Arial;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .BasketTool-navigation {
@@ -32,5 +38,23 @@
 .BasketTool-button {
   margin: 0;
   padding: 0;
-  width: 80px;
+  width: 69px;
+  height: 21px;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: Arial;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.BasketTool-label {
+  color: #000;
+  font-family: Arial;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

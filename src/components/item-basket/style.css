@@ -13,9 +13,17 @@
 .ItemBasket-title {
   width: 100%;
   padding: 20px 10px;
+  color: #000;
+  font-family: Arial;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .ItemBasket-title:hover {
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
   cursor: pointer;
 }
 
@@ -31,4 +39,39 @@
   text-align: right;
   font-size: 18px;
   white-space: nowrap;
+}
+
+.ItemBasket-price {
+  color: #404040;
+  text-align: right;
+  font-family: Arial;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.ItemBasket-amount {
+  color: #404040;
+  text-align: right;
+  font-family: Arial;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.ItemBasket-button {
+  margin: 0;
+  padding: 0;
+  width: 67px;
+  height: 19px;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: Arial;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

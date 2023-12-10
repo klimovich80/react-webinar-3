@@ -17,10 +17,18 @@
 .Item-title {
   width: 100%;
   padding: 20px 10px;
+  color: #000;
+  font-family: Arial;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .Item-title:hover {
   cursor: pointer;
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
 }
 
 .Item-actions {
@@ -34,5 +42,24 @@
 .Item-price {
   padding: 0 0 0 10px;
   white-space: nowrap;
+  color: #404040;
+  text-align: right;
+  font-family: Arial;
   font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Item-button {
+  width: 75px;
+  height: 21px;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: Arial;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

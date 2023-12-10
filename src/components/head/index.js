@@ -1,11 +1,14 @@
-import {memo} from "react";
+import { memo } from "react";
 import PropTypes from "prop-types";
+import { cn as bem } from '@bem-react/classname';
 import './style.css';
 
-function Head({title}) {
+const cn = bem('Head');
+
+function Head({ title }) {
   return (
-    <div className='Head'>
-      <h1>{title}</h1>
+    <div className={cn()}>
+      <h1 className={cn(`title`)}>{title}</h1>
     </div>
   )
 }
