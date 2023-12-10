@@ -1,4 +1,6 @@
 .Item {
+  margin: 0;
+  padding: 19px 0;
   display: flex;
   justify-content: flex-start;
   transition: background-color 1s;
@@ -11,12 +13,13 @@
 }
 
 .Item-code {
-  padding: 20px 10px 20px 20px;
+  padding: 0;
 }
 
 .Item-title {
+  margin: 0;
   width: 100%;
-  padding: 20px 10px;
+  padding: 4px 10px 0;
   color: #000;
   font-family: Arial;
   font-size: 16px;
@@ -32,7 +35,8 @@
 }
 
 .Item-actions {
-  padding: 20px 20px 20px 10px;
+  margin: 0;
+  padding: 0 20px 0 10px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
